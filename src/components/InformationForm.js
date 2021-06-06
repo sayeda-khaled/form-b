@@ -25,7 +25,7 @@ class InformationForm extends Component {
     event.preventDefault();
 
   }
-  
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -37,17 +37,17 @@ class InformationForm extends Component {
 
         <label>
           Last Name
-          <textarea name = "lastName" onChange={this.handleChange} />
+          <input name = "lastName" onChange={this.handleChange} />
         </label>
 
         <label>
           Address
-          <textarea name = "address" onChange={this.handleChange} />
+          <input name = "address" onChange={this.handleChange} />
         </label>
 
         <label>
           Phone Number
-          <textarea name = "phone" onChange={this.handleChange} />
+          <input name = "phone" onChange={this.handleChange} />
         </label>
 
 
