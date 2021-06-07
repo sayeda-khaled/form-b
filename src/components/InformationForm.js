@@ -1,12 +1,17 @@
 import { Component } from 'react';
 
+const defaultState = {
+  firstName: '',
+  lastName: '',
+  address: '',
+  phone: '',
+}
+
 class InformationForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
+    this.state = defaultState;
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,43 +19,37 @@ class InformationForm extends Component {
 
   handleChange(evt) {
     const value = evt.target.value;
-    this.setState({
-      ...this.state,
-      [evt.target.name]: value
-    });
+    this.setState({ [evt.target.name]: value });
   }
 
   handleSubmit(event) {
-    this.props.addPerson(this.state);
     event.preventDefault();
-
+    this.props.addPerson(this.state);
+    this.setState(defaultState);
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-
-      <label>
-        First Name
-        <input name = "firstName" onChange={this.handleChange} />
-      </label>
+        <label>
+          First Name
+          <input type="text" name="firstName" onChange={this.handleChange} value={this.state.firstName}/>
+        </label>
 
         <label>
           Last Name
-          <input name = "lastName" onChange={this.handleChange} />
+          <input type="text" name="lastName" onChange={this.handleChange} value={this.state.lastName}/>
         </label>
 
         <label>
           Address
-          <input name = "address" onChange={this.handleChange} />
+          <input type="text" name="address" onChange={this.handleChange} value={this.state.address} />
         </label>
 
         <label>
           Phone Number
-          <input name = "phone" onChange={this.handleChange} />
+          <input type="tel" name="phone" onChange={this.handleChange} value={this.state.phone}/>
         </label>
-
-
         <input type="submit" value="Submit" />
       </form>
     );
